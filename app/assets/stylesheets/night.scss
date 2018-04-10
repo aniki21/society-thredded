@@ -1,3 +1,24 @@
 @import "variables-night";
 @import "deps";
 @import "app";
+
+.thredded--messageboard,
+.thredded--messageboard:focus,
+.thredded--messageboard:hover,
+.thredded--messageboard:active{
+  border: none;
+}
+
+.app-header,
+.thredded--user-navigation{
+  border-color: $brand-primary
+}
+
+.thredded--post--content--spoiler{
+  color: $brand-primary;
+  background: $brand-primary;
+  &:hover{
+    color: $text-color;
+    background: transparent;
+  }
+}

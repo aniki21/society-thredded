@@ -62,3 +62,5 @@ gem 'thredded'
 gem 'rails-timeago'
 gem 'dalli'
 gem 'connection_pool'
+
+gem 'thredded-bbcode'

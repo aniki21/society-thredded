@@ -13,6 +13,7 @@ body {
 }
 
 .app-container {
+  background: $background-color;
   margin: 0 auto;
   max-width: ($grid-container-max-width + 4rem);
   padding: 0 1.2rem 0.75rem 1.2rem;

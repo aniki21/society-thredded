@@ -1,5 +1,5 @@
 Rails.application.routes.draw do  
-  root to: 'home#show'
+  root to: redirect('/forum')
   scope path: 'admin' do
     authenticate :user, lambda { |u| u.admin? } do
       mount RailsEmailPreview::Engine, at: 'emails'
