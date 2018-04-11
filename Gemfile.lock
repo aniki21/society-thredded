@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:aniki21/thredded.git
+  remote: https://github.com/aniki21/thredded.git
   revision: fbd41e125cd40368ab72d55ed3e8ef361cb702e6
   specs:
     thredded (0.14.3)
