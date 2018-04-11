@@ -8,8 +8,12 @@
   border: 0.5em solid $background-color;
 }
 
-.thredded--form-list{
-  input, textarea{
+.thredded--form-list,
+.form-inputs{
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  textarea{
     background: white !important;
   }
 }
