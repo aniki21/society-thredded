@@ -1,11 +1,11 @@
-$body-background-color: #fff !default;
-$background-color: #fff !default;
-$brand-primary: #7b1fa2 !default;
+$body-background-color: #7d5f46 !default;
+$background-color: #E7E4E0 !default;
+$brand-primary: #754C24 !default;
 $light-gray: #eee !default;
 $text-color: rgba(black, 0.87) !default;
 $secondary-text-color: rgba(opacify($text-color, 1), 0.54) !default;
 $secondary-nav-color: $secondary-text-color !default;
-$base-font-family: -apple-system, BlinkMacSystemFont, "Raleway", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
+$base-font-family: 'Roboto Slab', serif !default;
 $base-font-size: 1rem !default;
 $base-line-height: 1.5 !default;
 $grid-container-max-width: 45rem !default;
