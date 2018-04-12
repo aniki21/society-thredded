@@ -3,6 +3,8 @@
     <% if current_user %>
         <%= link_to current_user.display_name, user_path(current_user) %>
         |
+        <%= link_to t('thredded.recent_activity'), recent_path %>
+        |
         <%= link_to t('nav.sign_out'), main_app.destroy_user_session_path,
                     method: :delete %>
     <% else %>
