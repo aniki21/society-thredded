@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411102606) do
+ActiveRecord::Schema.define(version: 20180412142204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20180411102606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "locked", default: false, null: false
+    t.boolean "private", default: false
     t.index ["messageboard_group_id"], name: "index_thredded_messageboards_on_messageboard_group_id"
     t.index ["slug"], name: "index_thredded_messageboards_on_slug"
   end
