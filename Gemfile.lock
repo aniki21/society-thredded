@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/aniki21/thredded.git
-  revision: 63fd262b811c6aa831b612efcc7f53984441384e
+  revision: 53774a1277d23ed3f2ea2f0c037a3b009e9927b5
   specs:
-    thredded (0.14.3s2)
+    thredded (0.14.3s3)
       active_record_union (>= 1.3.0)
       autoprefixer-rails
       db_text_search (~> 0.2.0)
