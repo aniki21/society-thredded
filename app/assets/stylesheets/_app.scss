@@ -17,3 +17,17 @@
     background: white !important;
   }
 }
+
+@media (max-width: 34rem){
+  .app-nav-auth{
+    font-size: 1em;
+  }
+}
+
+.thredded--post--content{
+  font-size: $base-font-size;
+}
+
+.thredded--messageboard--title.read{
+  font-weight: normal;
+}
