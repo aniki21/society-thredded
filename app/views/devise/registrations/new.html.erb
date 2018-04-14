@@ -10,6 +10,8 @@
     <%= f.input :password_confirmation, required: true %>
   </div>
 
+  <%= recaptcha_tags %>
+
   <div class="form-actions">
     <%= f.button :submit, t(".sign_up") %>
   </div>

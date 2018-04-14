@@ -64,3 +64,5 @@ gem 'dalli'
 gem 'connection_pool'
 
 gem 'thredded-bbcode'
+
+gem 'recaptcha', require: 'recaptcha/rails'
