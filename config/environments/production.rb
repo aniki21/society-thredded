@@ -91,7 +91,7 @@ Rails.application.configure do
   # Set the default URL options for both Roadie and ActionMailer:
   config.roadie.url_options = config.action_mailer.default_url_options = {
     host: Settings.hostname,
-    protocol: 'https',
+    protocol: 'http',
   }
 
 
