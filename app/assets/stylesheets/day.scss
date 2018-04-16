@@ -1,6 +1,11 @@
 @import "variables";
 @import "deps";
 @import "app";
+
 .app-nav-logo img{
   max-width: 100%;
+}
+
+img.site-icon{
+  height: 1em;
 }
