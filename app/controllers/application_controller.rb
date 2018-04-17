@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
   def back_url
     session[:user_return_to] || (respond_to?(:root_path) ? root_path : thredded.root_path)
   end
+
+  def current_page
+    (params[:page] || 1).to_i
+  end
 end

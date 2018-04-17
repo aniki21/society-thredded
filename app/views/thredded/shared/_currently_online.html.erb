@@ -1,0 +1,19 @@
+<% if (users = active_users).present? %>
+  <hr />
+  <h3 class="thredded--currently-online--title open">
+    <%= t "thredded.users.currently_online" %>
+  </h3>
+
+  <p>
+  <% users.each do |user| %>
+    <a href="<%= user_path(user.id) %>">
+      <%= image_tag Thredded.avatar_url.call(user),
+        class: 'thredded--currently-online--avatar',
+        alt: user.thredded_display_name,
+        title: user.thredded_display_name
+      %>
+    </a>
+  <% end %>
+  </p>
+  <p><%= link_to 'All users', '/users' %></p>
+<% end %>

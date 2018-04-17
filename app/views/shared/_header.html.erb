@@ -3,7 +3,7 @@
     <% if current_user %>
         <%= link_to current_user.display_name, user_path(current_user) %>
         |
-        <%= link_to t('thredded.recent_activity'), '/recent' %>
+        <%= link_to 'Unread', '/recent' %>
         |
         <%= link_to t('nav.sign_out'), main_app.destroy_user_session_path,
                     method: :delete %>
@@ -12,21 +12,4 @@
     <% end %>
   </span>
   <a class="app-nav-logo" href="/"><%= t('brand.name') %></a>
-  <div class="app-nav-theme">
-    <span class="app-nav-text"><%= t 'nav.theme' %>:</span>
-    <ul>
-      <% themes.each do |(theme_key, theme_name)| %>
-        <%= content_tag :li, class: ('app-current' if theme_key == current_theme), 'data-theme' => theme_key do -%>
-          <% if theme_key == current_theme -%>
-            <span class="app-nav-text"><%= theme_name %></span>
-          <% else -%>
-            <button type="button">
-              <span class="app-nav-text"><%= theme_name %></span>
-              <span class="app-nav-icon"><%= inline_svg 'brightness.svg' %></span>
-            </button>
-          <% end -%>
-        <% end -%>
-      <% end %>
-    </ul>
-  </div>
 </header>

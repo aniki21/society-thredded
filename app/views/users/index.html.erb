@@ -1,0 +1,30 @@
+<h1>
+  Members' Register
+</h1>
+
+<table class="thredded--moderation--users-table thredded--table">
+  <caption><%= page_entries_info @users %></caption>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Posts</th>
+      <th>Last online</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <% user_detail = user.thredded_user_detail %>
+      <tr>
+        <td>
+          <%= link_to user.thredded_display_name, user_path(user.id), class: 'thredded--link' %>
+        </td>
+        <td>
+          <%= pluralize(user_detail.posts_count, 'post') %>
+        </td>
+        <td>
+          <%= time_ago(user_detail.last_seen_at) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
