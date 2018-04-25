@@ -35,11 +35,15 @@ module ApplicationHelper
   end
 
   def authority(user)
-    icon = if user.moderator?
-             '<i class="far fa-star" title="Moderator" style="font-size: 0.7em;"></i>'
-           else
-             ''
-           end
-    icon.html_safe
+    if user.moderator?
+      fa_icon('far fa-star', 'Moderator')
+    else
+      ''
+    end
+  end
+
+  def fa_icon(name, title=nil)
+    title ||= name
+    "<i class=\"#{name}\" title=\"#{title}\" style=\"font-size: 0.7em;\"></i>".html_safe
   end
 end
