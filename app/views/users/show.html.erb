@@ -3,7 +3,9 @@
   user_detail = user.thredded_user_detail
 %>
 <h1>
-  <%= image_tag Thredded.avatar_url.call(user), class: 'thredded--user--avatar' %><%= user.thredded_display_name %>
+  <%= image_tag Thredded.avatar_url.call(user), class: 'thredded--user--avatar' %>
+  <%= user.thredded_display_name %>
+  <%= authority(user) %>
 </h1>
 <ul>
   <% if user == current_user %>

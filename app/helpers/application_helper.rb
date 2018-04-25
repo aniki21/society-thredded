@@ -33,4 +33,13 @@ module ApplicationHelper
   def unread(messageboard)
     thredded_current_user.is_a?(User) ? Thredded::Topic.where(messageboard_id: messageboard.id).joins('INNER JOIN thredded_user_topic_read_states ON thredded_topics.id = thredded_user_topic_read_states.postable_id').where("thredded_user_topic_read_states.read_at < thredded_topics.last_post_at AND thredded_user_topic_read_states.user_id = ?", thredded_current_user).any? : false
   end
+
+  def authority(user)
+    icon = if user.moderator?
+             '<i class="far fa-star" title="Moderator" style="font-size: 0.7em;"></i>'
+           else
+             ''
+           end
+    icon.html_safe
+  end
 end

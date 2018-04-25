@@ -13,3 +13,10 @@ img.site-icon{
 .text-right{
   text-align: right;
 }
+
+.thredded--post--content--spoiler{
+  display: block;
+  padding: 1em;
+  margin: 1em 0;
+  transition: color 0.1s;
+}
