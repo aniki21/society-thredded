@@ -31,3 +31,19 @@
 .thredded--messageboard--title.read{
   font-weight: normal;
 }
+
+.thredded--post--content--spoiler{
+  display: block;
+  padding: 1em;
+  margin: 1em 0;
+  transition: color 0.1s;
+  color: $spoiler-color;
+  background: $spoiler-color;
+  &:hover{
+    color: $spoiler-color;
+    background: $spoiler-color;
+  }
+  &.spoiler--show{
+    color: $text-color;
+  }
+}

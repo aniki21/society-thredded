@@ -13,3 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$( document ).on('turbolinks:load', function() {
+  $('.thredded--post--content--spoiler').on('click', function(){
+    $(this).toggleClass('spoiler--show');
+  });
+})
