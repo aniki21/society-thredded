@@ -15,7 +15,7 @@
 //= require_tree .
 
 $( document ).on('turbolinks:load', function() {
-  $('.thredded--post--content--spoiler').on('click', function(){
+  $('.app-container').on('click', '.thredded--post--content--spoiler', function(){
     $(this).toggleClass('spoiler--show');
   });
 })
