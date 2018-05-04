@@ -39,11 +39,38 @@
   transition: color 0.1s;
   color: $spoiler-color;
   background: $spoiler-color;
+
+  img{
+    opacity: 0;
+    transition: opacity 0.1s;
+    pointer-events: none;
+  }
+
+  a{
+    &:link, &:hover, &:active, &:visited{
+      color: $spoiler-color;
+      pointer-events: none;
+    }
+  }
+
   &:hover{
     color: $spoiler-color;
     background: $spoiler-color;
   }
   &.spoiler--show{
     color: $text-color;
+
+    img{
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    a{
+      color: $brand-primary;
+      pointer-events: auto;
+      &:hover{
+        color: $text-color;
+      }
+    }
   }
 }
