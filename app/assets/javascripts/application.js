@@ -14,8 +14,12 @@
 //= require turbolinks
 //= require_tree .
 
-$( document ).on('turbolinks:load', function() {
+$(document).ready(function(){ enableSpoilers(); });
+$(document).on('turbolinks:load', function() { enableSpoilers(); });
+
+var enableSpoilers = function(){
+  console.log('Spoilers enabled');
   $('.app-container').on('click', '.thredded--post--content--spoiler', function(){
     $(this).toggleClass('spoiler--show');
   });
-})
+}

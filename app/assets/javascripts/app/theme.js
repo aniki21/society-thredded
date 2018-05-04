@@ -10,5 +10,3 @@ window.App.onPageLoad(function () {
     });
   });
 });
-
-
