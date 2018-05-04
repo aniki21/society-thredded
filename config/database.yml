@@ -17,7 +17,7 @@ defaults: &defaults
   host: <%= db_host %>
   port: <%= db_port %>
   username: <%= ENV.fetch('DB_USERNAME', 'the-society_dev').inspect %>
-  password: <%= ENV.fetch('DB_PASSWORD', "the-society").inspect %>
+  password: <%= ENV.fetch('DB_PASSWORD', 'the-society').inspect %>
   encoding: utf8
 
 development:
