@@ -66,3 +66,5 @@ gem 'connection_pool'
 gem 'thredded-bbcode'
 
 gem 'recaptcha', require: 'recaptcha/rails'
+
+gem 'jquery-rails'
