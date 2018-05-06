@@ -37,7 +37,7 @@
   padding: 1em;
   margin: 1em 0;
   transition: color 0.1s;
-  color: $spoiler-color;
+  color: transparent;
   background: $spoiler-color;
 
   img{
@@ -48,13 +48,13 @@
 
   a{
     &:link, &:hover, &:active, &:visited{
-      color: $spoiler-color;
+      color: transparent;
       pointer-events: none;
     }
   }
 
   &:hover{
-    color: $spoiler-color;
+    color: transparent;
     background: $spoiler-color;
   }
   &.spoiler--show{
