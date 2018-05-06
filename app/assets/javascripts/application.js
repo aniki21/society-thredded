@@ -19,8 +19,7 @@ $(document).ready(function(){ enableSpoilers(); });
 $(document).on('turbolinks:load', function() { enableSpoilers(); });
 
 var enableSpoilers = function(){
-  console.log('Spoilers enabled');
-  $('.app-container').on('click', '.thredded--post--content--spoiler', function(){
+  $('body').on('click', '.thredded--post--content--spoiler', function(){
     $(this).toggleClass('spoiler--show');
   });
 }
