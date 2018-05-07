@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-Thredded.onPageLoad(() => {
+Thredded.onPageLoad(function(){
   $('body').on('click', '.thredded--post--content--spoiler', function(){
     $(this).toggleClass('spoiler--show');
   });
