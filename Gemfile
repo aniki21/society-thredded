@@ -63,7 +63,7 @@ gem 'rails-timeago'
 gem 'dalli'
 gem 'connection_pool'
 
-gem 'thredded-bbcode'
+gem 'thredded-bbcode', git: 'https://github.com/aniki21/thredded-bbcode'
 
 gem 'recaptcha', require: 'recaptcha/rails'
 

@@ -100,6 +100,7 @@ Thredded.layout = 'application'
 # See the Sanitize docs for more information on the underlying library: https://github.com/rgrove/sanitize/#readme
 # E.g. to allow a custom element <custom-element>:
 # Thredded::ContentFormatter.whitelist[:elements] += %w(custom-element)
+Thredded::ContentFormatter.whitelist[:attributes][:all] += %w[tabindex]
 
 # ==> User autocompletion (Private messages and @-mentions)
 # Thredded.autocomplete_min_length = 2 lower to 1 if have 1-letter names -- increase if you want
