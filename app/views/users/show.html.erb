@@ -9,45 +9,50 @@
 </h1>
 <p><small>
   <%= t 'thredded.users.user_since_html', time_ago: time_ago(user.created_at) %>
-<% if user_detail.last_seen_at %>
-  | <%= t 'thredded.users.last_active_html', time_ago: time_ago(user_detail.last_seen_at) %>
-<% end %>
-<% if user_detail.topics_count > 0 %>
-  | <%= t 'thredded.users.started_topics_count', count: user_detail.topics_count %>
-<% end %>
-<% if user_detail.posts_count > 0 %>
-  | <%= t 'thredded.users.posts_count', count: user_detail.posts_count %>
-<% end %>
+  <% if user_detail.last_seen_at %>
+    | <%= t 'thredded.users.last_active_html', time_ago: time_ago(user_detail.last_seen_at) %>
+  <% end %>
+  <% if user_detail.topics_count > 0 %>
+    | <%= t 'thredded.users.started_topics_count', count: user_detail.topics_count %>
+  <% end %>
+  <% if user_detail.posts_count > 0 %>
+    | <%= t 'thredded.users.posts_count', count: user_detail.posts_count %>
+  <% end %>
 </small></p>
-<% if user.bio.present? %>
-  <p><strong>Bio</strong></p>
-  <p><%= Thredded::ContentFormatter.new(nil).format_content(user.bio) %></p>
-<% end %>
-<% if user.steam.present? || user.psn.present? || user.xbox %>
-  <p><strong>Gamertags</strong></p>
-  <ul class="no-style">
-    <% if user.steam.present? %>
-      <li><i class="fab fa-steam" title="SteamID"></i> <%= user.steam %></li>
-    <% end %>
-    <% if user.psn.present? %>
-      <li><i class="fab fa-playstation" title="PSN"></i> <%= user.psn %></li>
-    <% end %>
-    <% if user.xbox.present? %>
-      <li><i class="fab fa-xbox" title="Xbox Live"></i> <%= user.xbox %></li>
-    <% end %>
-  </ul>
-<% end %>
-<% if user == current_user %>
-  <%= link_to t('nav.edit_my_account'), edit_user_registration_path, class: 'thredded--button' %>
+<% if current_user.present? %>
+  <% if user.bio.present? %>
+    <p><strong>Bio</strong></p>
+    <p><%= Thredded::ContentFormatter.new(nil).format_content(user.bio) %></p>
+  <% end %>
+  <% if user.steam.present? || user.psn.present? || user.xbox %>
+    <p><strong>Gamertags</strong></p>
+    <ul class="no-style">
+      <% if user.steam.present? %>
+        <li><i class="fab fa-steam" title="SteamID"></i> <%= user.steam %></li>
+      <% end %>
+      <% if user.switch.present? %>
+        <li><i class="fab fa-nintendo-switch" title="Nintendo Switch Friend Code"></i> <%= user.switch %></li>
+      <% end %>
+      <% if user.psn.present? %>
+        <li><i class="fab fa-playstation" title="PSN"></i> <%= user.psn %></li>
+      <% end %>
+      <% if user.xbox.present? %>
+        <li><i class="fab fa-xbox" title="Xbox Live"></i> <%= user.xbox %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if user == current_user %>
+    <%= link_to t('nav.edit_my_account'), edit_user_registration_path, class: 'thredded--button' %>
+  <% end %>
 <% end %>
 
 <ul>
 </ul>
 <% posts_page = Thredded.posts_page_view(
-    scope: user.thredded_posts.order_newest_first.limit(5),
-    current_user: current_user) %>
+  scope: user.thredded_posts.order_newest_first.limit(5),
+  current_user: current_user) %>
 <% if posts_page.present? %>
-    <h2><%= t 'thredded.users.recent_activity' %></h2>
-    <%= Thredded::ApplicationController.render partial: 'thredded/users/posts',
-                                               locals: { posts: posts_page } %>
+  <h2><%= t 'thredded.users.recent_activity' %></h2>
+  <%= Thredded::ApplicationController.render partial: 'thredded/users/posts',
+    locals: { posts: posts_page } %>
 <% end %>
