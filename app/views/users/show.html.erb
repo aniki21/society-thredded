@@ -21,11 +21,9 @@
 </small></p>
 <% if current_user.present? %>
   <% if user.bio.present? %>
-    <p><strong>Bio</strong></p>
     <p><%= Thredded::ContentFormatter.new(nil).format_content(user.bio) %></p>
   <% end %>
   <% if user.steam.present? || user.psn.present? || user.xbox %>
-    <p><strong>Gamertags</strong></p>
     <ul class="no-style">
       <% if user.steam.present? %>
         <li><i class="fab fa-steam" title="SteamID"></i> <%= user.steam %></li>
