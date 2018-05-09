@@ -74,3 +74,49 @@
     }
   }
 }
+<<<<<<< Updated upstream
+=======
+
+.society--spoiler{
+  display:block;
+  background: $spoiler-color;
+  position: relative;
+  cursor: pointer;
+  nav-index: 0;
+  margin: 1rem 0;
+
+  .society--spoiler-warning{
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    user-select: none;
+  }
+
+  .society--spoiler-content{
+    display: block;
+    padding: 1rem;
+    visibility: hidden;
+  }
+
+  &:focus-within > .society--spoiler-warning{
+    display: none;
+  }
+  &:focus-within > .society--spoiler-content{
+    visibility: visible;
+  }
+}
+
+.footer{
+  text-align: center;
+  color: $secondary-text-color;
+}
+
+ul.no-style{
+  list-style: none;
+  padding: 0;
+  i.fab{
+    width: 1.5rem;
+  }
+}
+>>>>>>> Stashed changes

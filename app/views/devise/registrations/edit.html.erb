@@ -8,6 +8,17 @@
     To set or update your avatar, go to <%= link_to 'Gravatar', 'http://en.gravatar.com', target: '_blank' %>
 
     <%= f.input :display_name, required: true, autofocus: true %>
+
+    <label class="string">Bio</label>
+    <%= f.text_area :bio, maxlength: 250 %>
+    <small>Accepts BBCode, <a href="https://kramdown.gettalong.org/quickref.html" target="_blank">Markdown</a> and <a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank">Emoji</a></small>
+
+    <%= f.input :steam, label: 'SteamID' %>
+    <%= f.input :psn, label: 'PSN' %>
+    <%= f.input :xbox, label: 'Xbox Live' %>
+
+    <hr />
+
     <%= f.input :email, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -16,6 +27,8 @@
 
     <%= f.input :password, autocomplete: "off", hint: t(".leave_blank_if_you_don_t_want_to_change_it"), required: false %>
     <%= f.input :password_confirmation, required: false %>
+
+    <hr />
     <%= f.input :current_password, hint: t(".we_need_your_current_password_to_confirm_your_changes"), required: true %>
   </div>
 
