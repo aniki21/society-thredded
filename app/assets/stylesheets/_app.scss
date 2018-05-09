@@ -104,3 +104,16 @@
     visibility: visible;
   }
 }
+
+.footer{
+  text-align: center;
+  color: $secondary-text-color;
+}
+
+ul.no-style{
+  list-style: none;
+  padding: 0;
+  i.fab{
+    width: 1.5rem;
+  }
+}
