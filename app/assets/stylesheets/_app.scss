@@ -110,6 +110,21 @@
   color: $secondary-text-color;
 }
 
+// .thredded--post--content{
+//   ul{
+//     list-style: none;
+//     padding-left: 1rem;
+//     li{
+//       &:before{
+//         content: "\f0a4";
+//         font-family: 'Font Awesome\ 5 Free';
+//         margin-left: -1rem;
+//         padding-right: 0.5rem;
+//       }
+//     }
+//   }
+// }
+
 ul.no-style{
   list-style: none;
   padding: 0;

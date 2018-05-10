@@ -101,6 +101,8 @@ Thredded.layout = 'application'
 # E.g. to allow a custom element <custom-element>:
 # Thredded::ContentFormatter.whitelist[:elements] += %w(custom-element)
 Thredded::ContentFormatter.whitelist[:attributes][:all] += %w[tabindex]
+Thredded::ContentFormatter.whitelist[:attributes]['i'] ||= []
+Thredded::ContentFormatter.whitelist[:attributes]['i'] += %w[class]
 
 # ==> User autocompletion (Private messages and @-mentions)
 # Thredded.autocomplete_min_length = 2 lower to 1 if have 1-letter names -- increase if you want
