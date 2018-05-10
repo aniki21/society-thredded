@@ -121,3 +121,31 @@ ul.no-style{
 img{
   max-width: 100%;
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    background-color: $secondary-text-color;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    min-width: 100px;
+
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    transition: opacity 0.2s;
+  }
+
+  &:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+}

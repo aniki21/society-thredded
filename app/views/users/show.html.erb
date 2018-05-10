@@ -26,16 +26,16 @@
   <% if user.steam.present? || user.psn.present? || user.xbox %>
     <ul class="no-style">
       <% if user.steam.present? %>
-        <li><i class="fab fa-steam" title="SteamID"></i> <%= user.steam %></li>
+        <li><%= fa_icon 'fab fa-steam', 'SteamID' %> <%= user.steam %></li>
       <% end %>
       <% if user.switch.present? %>
-        <li><i class="fab fa-nintendo-switch" title="Nintendo Switch Friend Code"></i> <%= user.switch %></li>
+        <li><%= fa_icon 'fab fa-nintendo-switch', 'Nintendo Switch Friend Code' %> <%= user.switch %></li>
       <% end %>
       <% if user.psn.present? %>
-        <li><i class="fab fa-playstation" title="PSN"></i> <%= user.psn %></li>
+        <li><%= fa_icon 'fab fa-playstation', 'PlayStation Network' %> <%= user.psn %></li>
       <% end %>
       <% if user.xbox.present? %>
-        <li><i class="fab fa-xbox" title="Xbox Live"></i> <%= user.xbox %></li>
+        <li><%= fa_icon 'fab fa-xbox', 'Xbox Live' %> <%= user.xbox %></li>
       <% end %>
     </ul>
   <% end %>
