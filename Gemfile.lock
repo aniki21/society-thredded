@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/aniki21/thredded-bbcode
-  revision: 2d23910981feccd356d681605693e924b6859fc1
+  revision: cf3b3cf4cacc73cffcb32687e067b90228e7e749
   specs:
-    thredded-bbcode (0.1.0s2)
+    thredded-bbcode (0.1.0s3)
       bbcoder
 
 GIT
