@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: https://github.com/aniki21/thredded.git
-  revision: affbb72d267c63d30c659df2bc3d5a4d8e5bb876
+  revision: 9506ca130e9c6a43a0019896eb8a409ef74d11c4
   specs:
-    thredded (0.14.4is1)
+    thredded (0.14.4s2)
       active_record_union (>= 1.3.0)
       autoprefixer-rails
       db_text_search (~> 0.2.0)
@@ -76,7 +76,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (8.4.1)
+    autoprefixer-rails (8.5.0)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -299,7 +299,7 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
     ruby_dep (1.5.0)
-    sanitize (4.6.4)
+    sanitize (4.6.5)
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4)
