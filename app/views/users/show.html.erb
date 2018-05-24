@@ -25,14 +25,14 @@
   <% end %>
   <% if user.steam.present? || user.psn.present? || user.xbox %>
     <ul class="no-style">
-      <% if user.steam.present? %>
-        <li><%= fa_icon 'fab fa-steam', 'SteamID' %> <%= user.steam %></li>
-      <% end %>
       <% if user.switch.present? %>
         <li><%= fa_icon 'fab fa-nintendo-switch', 'Nintendo Switch Friend Code' %> <%= user.switch %></li>
       <% end %>
       <% if user.psn.present? %>
         <li><%= fa_icon 'fab fa-playstation', 'PlayStation Network' %> <%= user.psn %></li>
+      <% end %>
+      <% if user.steam.present? %>
+        <li><%= fa_icon 'fab fa-steam', 'Steam ID' %> <%= user.steam %></li>
       <% end %>
       <% if user.xbox.present? %>
         <li><%= fa_icon 'fab fa-xbox', 'Xbox Live' %> <%= user.xbox %></li>
@@ -41,6 +41,8 @@
   <% end %>
   <% if user == current_user %>
     <%= link_to t('nav.edit_my_account'), edit_user_registration_path, class: 'thredded--button' %>
+  <% else %>
+    <%= link_to 'Send a PM', new_private_topic_path(private_topic: { user_names: user.thredded_display_name }), class: 'thredded--button' %>
   <% end %>
 <% end %>
 
