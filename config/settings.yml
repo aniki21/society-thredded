@@ -1,3 +1,5 @@
 <% hostname = ENV['APP_HOST'] || 'society.demondownload.xyz' %>
 hostname: <%= hostname.inspect %>
 email_sender: society@demondownload.xyz
+recaptcha_site_key: 6LegQVMUAAAAAPLFdneMtZ2f2kSoGb9wHvs6Hpu_
+recaptcha_secret_key: 6LegQVMUAAAAAOA--ra_RpfUcysuywEEGywxS15i
