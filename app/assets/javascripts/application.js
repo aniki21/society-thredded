@@ -14,12 +14,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){ enableSpoilers(); });
-$(document).on('turbolinks:load', function() { enableSpoilers(); });
-
-var enableSpoilers = function(){
-  $('body').on('click', '.thredded--post--content--spoiler', function(){
-    $(this).toggleClass('spoiler--show');
-  });
-}

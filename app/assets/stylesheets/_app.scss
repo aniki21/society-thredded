@@ -33,76 +33,7 @@
 }
 
 .thredded--post--content--spoiler{
-  display: block;
-  padding: 1em;
-  margin: 1em 0;
-  transition: color 0.1s;
-  color: transparent;
   background: $spoiler-color;
-
-  img{
-    opacity: 0;
-    transition: opacity 0.1s;
-    pointer-events: none;
-  }
-
-  a{
-    &:link, &:hover, &:active, &:visited{
-      color: transparent;
-      pointer-events: none;
-    }
-  }
-
-  &:hover{
-    color: transparent;
-    background: $spoiler-color;
-  }
-  &.spoiler--show{
-    color: $text-color;
-
-    img{
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    a{
-      color: $brand-primary;
-      pointer-events: auto;
-      &:hover{
-        color: $text-color;
-      }
-    }
-  }
-}
-
-.society--spoiler{
-  display:block;
-  background: $spoiler-color;
-  position: relative;
-  cursor: pointer;
-  nav-index: 0;
-  margin: 1rem 0;
-
-  .society--spoiler-warning{
-    display: block;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    user-select: none;
-  }
-
-  .society--spoiler-content{
-    display: block;
-    padding: 1rem;
-    visibility: hidden;
-  }
-
-  &:focus-within > .society--spoiler-warning{
-    display: none;
-  }
-  &:focus-within > .society--spoiler-content{
-    visibility: visible;
-  }
 }
 
 .footer{

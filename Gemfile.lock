@@ -328,7 +328,7 @@ GEM
       sass (>= 3.4.21)
       sprockets-es6
       timeago_js
-    thredded-bbcode (0.1.0)
+    thredded-bbcode (1.0.0)
       bbcoder
     tilt (2.0.8)
     timeago_js (3.0.2)
