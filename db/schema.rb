@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_063614) do
     t.string "psn"
     t.string "steam"
     t.string "xbox"
+    t.string "switch"
     t.index "lower((display_name)::text) text_pattern_ops", name: "users_display_name_lower", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

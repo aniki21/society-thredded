@@ -173,4 +173,10 @@ Rails.application.config.to_prepare do
       render template: 'devise/sessions/new', status: :forbidden
     end
   end
+
+  Thredded::NullUser.module_eval do
+    def thredded_can_read_messageboards
+      Thredded::Messageboard.where(private: false)
+    end
+  end
 end
