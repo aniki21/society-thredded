@@ -135,6 +135,10 @@ Rails.application.config.to_prepare do
       <a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank">Emoji</a></small>
     HTML
   end
+
+  Thredded.view_hooks.moderation_user_page.user_moderation_actions.config.after do |user:, **args|
+    render 'thredded_ext/moderation/user_moderator_toggle', user: user if thredded_current_user.admin?
+  end
 end
 
 # ==> Topic following

@@ -3,7 +3,8 @@ admin = User.create!(
     display_name: 'Admin',
     email: "admin@the-society.com",
     password: "123456",
-    admin: true
+    admin: true,
+    moderator: true,
 )
 
 messageboard = Thredded::Messageboard.create!(
