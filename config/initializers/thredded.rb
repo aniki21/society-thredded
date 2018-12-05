@@ -104,6 +104,9 @@ Thredded::ContentFormatter.whitelist[:attributes][:all] += %w[tabindex]
 Thredded::ContentFormatter.whitelist[:attributes]['i'] ||= []
 Thredded::ContentFormatter.whitelist[:attributes]['i'] += %w[class]
 
+require 'html_pipeline_twemoji'
+Thredded::ContentFormatter.after_markup_filters.insert(1, HTMLPipelineTwemoji)
+
 # ==> User autocompletion (Private messages and @-mentions)
 # Thredded.autocomplete_min_length = 2 lower to 1 if have 1-letter names -- increase if you want
 
