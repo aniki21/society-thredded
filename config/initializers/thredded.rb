@@ -124,12 +124,15 @@ Thredded.layout = 'application'
 #
 #     $ grep view_hooks -R --include '*.html.erb' "$(bundle show thredded)"
 #
-# Rails.application.config.to_prepare do
-#   Thredded.view_hooks.post_form.content_text_area.config.before do |form:, **args|
-#     # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
-#     'hi'
-#   end
-# end
+Rails.application.config.to_prepare do
+  Thredded.view_hooks.post_form.content_text_area.config.after do |form:, **args|
+    # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
+    raw(<<~'HTML')
+      <small>Accepts BBCode, <a href="https://kramdown.gettalong.org/quickref.html" target="_blank">Markdown</a> and
+      <a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank">Emoji</a></small>
+    HTML
+  end
+end
 
 # ==> Topic following
 #
