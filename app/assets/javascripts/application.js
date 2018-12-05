@@ -14,10 +14,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-var enableSpoilers = function(){
-  $('body').on('click', '.thredded--post--content--spoiler', function(){
-    $(this).toggleClass('spoiler--show');
-  });
-}
-Thredded.onPageLoad(function(){ enableSpoilers(); });
-$(document).ready(function(){ enableSpoilers(); });
