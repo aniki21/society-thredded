@@ -8,22 +8,6 @@
   border: 0.5em solid $background-color;
 }
 
-.thredded--form-list,
-.form-inputs{
-  input[type='text'],
-  input[type='email'],
-  input[type='password'],
-  textarea{
-    background: white !important;
-  }
-}
-
-@media (max-width: 34rem){
-  .app-nav-auth{
-    font-size: 1em;
-  }
-}
-
 .thredded--post--content{
   font-size: $base-font-size;
 }

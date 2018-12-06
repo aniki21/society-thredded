@@ -2,15 +2,4 @@
 @import "deps";
 @import "app";
 
-.thredded--messageboard,
-.thredded--messageboard:focus,
-.thredded--messageboard:hover,
-.thredded--messageboard:active{
-  border: none;
-}
-
-.app-header,
-.thredded--user-navigation{
-  border-color: $brand-primary
-}
 

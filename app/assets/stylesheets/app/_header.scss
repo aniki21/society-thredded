@@ -2,27 +2,63 @@
 
 .app-header {
   border-bottom: 1px solid $light-gray;
-  a {
-    display: inline-block;
-    padding: 1rem 0;
-  }
+  display: flex;
+  align-items: flex-start;
 }
 
 .app-nav-logo {
   color: $text-color;
+  min-width: 14em;
   text-decoration: none;
   font-weight: bold;
+
+  @media (max-width: $nav-collapse-until) {
+    max-width: min-content;
+  }
+}
+
+.app-nav-logo,
+.app-nav-theme-toggle {
+  display: inline-block;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  @media (max-width: $nav-collapse-until) {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+.app-nav-theme {
+  @media (max-width: $nav-collapse-until) {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
 }
 
 .app-nav-auth {
-  float: right;
+  margin-left: auto;
+  min-width: 1.975rem;
+  &--signed-in {
+    min-width: 4.25rem;
+  }
+
+  a {
+    display: inline-block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 
   @include thredded-media-mobile {
     font-size: 0;
-
+    text-align: right;
     a {
-      margin-left: 0.4rem;
+      margin-left: 0.25rem;
+      padding: 0 0 0.25rem 0;
       font-size: 1rem;
+      word-break: break-word;
+      &:first-child {
+        padding-top: 0.25rem;
+      }
     }
   }
 }
