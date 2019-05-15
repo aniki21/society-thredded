@@ -1,0 +1,15 @@
+<h2>Special access</h2>
+<%= form_for [main_app, :thredded_ext, :moderation, user], html: { class: 'thredded--form' } do |f| %>
+  <ul class="thredded--form-list">
+    <li>
+      <%= f.label Thredded.moderator_column do %>
+        Moderator
+        <p style="font-weight:normal">
+          <%= f.check_box Thredded.moderator_column %>
+          Grant this user moderator access
+        </p>
+      <% end %>
+    </li>
+  </ul>
+  <button class="thredded--button" type="submit">Save</button>
+<% end %>
