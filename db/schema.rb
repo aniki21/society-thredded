@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509200717) do
+ActiveRecord::Schema.define(version: 2018_09_30_063614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20180509200717) do
 
   create_table "thredded_categories", force: :cascade do |t|
     t.bigint "messageboard_id", null: false
-    t.string "name", limit: 191, null: false
-    t.string "description", limit: 255
+    t.text "name", null: false
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug", limit: 191, null: false
-    t.index "lower((name)::text) text_pattern_ops", name: "thredded_categories_name_ci"
+    t.text "slug", null: false
+    t.index "lower(name) text_pattern_ops", name: "thredded_categories_name_ci"
     t.index ["messageboard_id", "slug"], name: "index_thredded_categories_on_messageboard_id_and_slug", unique: true
     t.index ["messageboard_id"], name: "index_thredded_categories_on_messageboard_id"
   end
@@ -59,12 +59,12 @@ ActiveRecord::Schema.define(version: 20180509200717) do
     t.bigint "thredded_messageboard_id", null: false
     t.datetime "last_seen_at", null: false
     t.index ["thredded_messageboard_id", "last_seen_at"], name: "index_thredded_messageboard_users_for_recently_active"
-    t.index ["thredded_messageboard_id", "thredded_user_detail_id"], name: "index_thredded_messageboard_users_primary"
+    t.index ["thredded_messageboard_id", "thredded_user_detail_id"], name: "index_thredded_messageboard_users_primary", unique: true
   end
 
   create_table "thredded_messageboards", force: :cascade do |t|
-    t.string "name", limit: 191, null: false
-    t.string "slug", limit: 191
+    t.text "name", null: false
+    t.text "slug"
     t.text "description"
     t.integer "topics_count", default: 0
     t.integer "posts_count", default: 0
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20180509200717) do
     t.boolean "locked", default: false, null: false
     t.boolean "private", default: false
     t.index ["messageboard_group_id"], name: "index_thredded_messageboards_on_messageboard_group_id"
-    t.index ["slug"], name: "index_thredded_messageboards_on_slug"
+    t.index ["slug"], name: "index_thredded_messageboards_on_slug", unique: true
   end
 
   create_table "thredded_notifications_for_followed_topics", force: :cascade do |t|
@@ -109,8 +109,7 @@ ActiveRecord::Schema.define(version: 20180509200717) do
   create_table "thredded_posts", force: :cascade do |t|
     t.bigint "user_id"
     t.text "content"
-    t.string "ip", limit: 255
-    t.string "source", limit: 255, default: "web"
+    t.string "source", limit: 191, default: "web"
     t.bigint "postable_id", null: false
     t.bigint "messageboard_id", null: false
     t.integer "moderation_state", null: false
@@ -128,23 +127,24 @@ ActiveRecord::Schema.define(version: 20180509200717) do
     t.bigint "user_id"
     t.text "content"
     t.bigint "postable_id", null: false
-    t.string "ip", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["postable_id", "created_at"], name: "index_thredded_private_posts_on_postable_id_and_created_at"
   end
 
   create_table "thredded_private_topics", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "last_user_id"
-    t.string "title", limit: 255, null: false
-    t.string "slug", limit: 191, null: false
+    t.text "title", null: false
+    t.text "slug", null: false
     t.integer "posts_count", default: 0
-    t.string "hash_id", limit: 191, null: false
+    t.string "hash_id", limit: 20, null: false
     t.datetime "last_post_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hash_id"], name: "index_thredded_private_topics_on_hash_id"
-    t.index ["slug"], name: "index_thredded_private_topics_on_slug"
+    t.index ["last_post_at"], name: "index_thredded_private_topics_on_last_post_at"
+    t.index ["slug"], name: "index_thredded_private_topics_on_slug", unique: true
   end
 
   create_table "thredded_private_users", force: :cascade do |t|
@@ -166,20 +166,20 @@ ActiveRecord::Schema.define(version: 20180509200717) do
   create_table "thredded_topics", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "last_user_id"
-    t.string "title", limit: 255, null: false
-    t.string "slug", limit: 191, null: false
+    t.text "title", null: false
+    t.text "slug", null: false
     t.bigint "messageboard_id", null: false
     t.integer "posts_count", default: 0, null: false
     t.boolean "sticky", default: false, null: false
     t.boolean "locked", default: false, null: false
-    t.string "hash_id", limit: 191, null: false
-    t.string "type", limit: 191
+    t.string "hash_id", limit: 20, null: false
     t.integer "moderation_state", null: false
     t.datetime "last_post_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "to_tsvector('english'::regconfig, (title)::text)", name: "thredded_topics_title_fts", using: :gist
+    t.index "to_tsvector('english'::regconfig, title)", name: "thredded_topics_title_fts", using: :gist
     t.index ["hash_id"], name: "index_thredded_topics_on_hash_id"
+    t.index ["last_post_at"], name: "index_thredded_topics_on_last_post_at"
     t.index ["messageboard_id"], name: "index_thredded_topics_on_messageboard_id"
     t.index ["moderation_state", "sticky", "updated_at"], name: "index_thredded_topics_for_display", order: { sticky: :desc, updated_at: :desc }
     t.index ["slug"], name: "index_thredded_topics_on_slug", unique: true
@@ -231,8 +231,9 @@ ActiveRecord::Schema.define(version: 20180509200717) do
   create_table "thredded_user_private_topic_read_states", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "postable_id", null: false
-    t.integer "page", default: 1, null: false
     t.datetime "read_at", null: false
+    t.integer "unread_posts_count", default: 0, null: false
+    t.integer "read_posts_count", default: 0, null: false
     t.index ["user_id", "postable_id"], name: "thredded_user_private_topic_read_states_user_postable", unique: true
   end
 
@@ -247,8 +248,12 @@ ActiveRecord::Schema.define(version: 20180509200717) do
   create_table "thredded_user_topic_read_states", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "postable_id", null: false
-    t.integer "page", default: 1, null: false
     t.datetime "read_at", null: false
+    t.integer "unread_posts_count", default: 0, null: false
+    t.integer "read_posts_count", default: 0, null: false
+    t.bigint "messageboard_id", null: false
+    t.index ["messageboard_id"], name: "index_thredded_user_topic_read_states_on_messageboard_id"
+    t.index ["user_id", "messageboard_id"], name: "thredded_user_topic_read_states_user_messageboard"
     t.index ["user_id", "postable_id"], name: "thredded_user_topic_read_states_user_postable", unique: true
   end
 
@@ -272,6 +277,7 @@ ActiveRecord::Schema.define(version: 20180509200717) do
     t.string "psn"
     t.string "steam"
     t.string "xbox"
+    t.string "switch"
     t.index "lower((display_name)::text) text_pattern_ops", name: "users_display_name_lower", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

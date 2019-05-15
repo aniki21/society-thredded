@@ -30,7 +30,7 @@ end
 Thredded.current_user_method = :"current_#{Thredded.user_class_name.demodulize.underscore}"
 
 # User avatar URL. rb-gravatar gem is used by default:
-Thredded.avatar_url = ->(user) { Gravatar.src(user.email, 156, 'mm') }
+Thredded.avatar_url = ->(user) { Gravatar.src(user.email, 156, 'identicon') }
 
 # ==> Database Configuration
 # By default, thredded uses integers for record ID route constraints.
@@ -100,6 +100,12 @@ Thredded.layout = 'application'
 # See the Sanitize docs for more information on the underlying library: https://github.com/rgrove/sanitize/#readme
 # E.g. to allow a custom element <custom-element>:
 # Thredded::ContentFormatter.whitelist[:elements] += %w(custom-element)
+Thredded::ContentFormatter.whitelist[:attributes][:all] += %w[tabindex]
+Thredded::ContentFormatter.whitelist[:attributes]['i'] ||= []
+Thredded::ContentFormatter.whitelist[:attributes]['i'] += %w[class]
+
+require 'html_pipeline_twemoji'
+Thredded::ContentFormatter.after_markup_filters.insert(1, HTMLPipelineTwemoji)
 
 # ==> User autocompletion (Private messages and @-mentions)
 # Thredded.autocomplete_min_length = 2 lower to 1 if have 1-letter names -- increase if you want
@@ -124,12 +130,19 @@ Thredded.layout = 'application'
 #
 #     $ grep view_hooks -R --include '*.html.erb' "$(bundle show thredded)"
 #
-# Rails.application.config.to_prepare do
-#   Thredded.view_hooks.post_form.content_text_area.config.before do |form:, **args|
-#     # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
-#     'hi'
-#   end
-# end
+Rails.application.config.to_prepare do
+  Thredded.view_hooks.post_form.content_text_area.config.after do |form:, **args|
+    # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
+    raw(<<~'HTML')
+      <small>Accepts BBCode, <a href="https://kramdown.gettalong.org/quickref.html" target="_blank">Markdown</a> and
+      <a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank">Emoji</a></small>
+    HTML
+  end
+
+  Thredded.view_hooks.moderation_user_page.user_moderation_actions.config.after do |user:, **args|
+    render 'thredded_ext/moderation/user_moderator_toggle', user: user if thredded_current_user.admin?
+  end
+end
 
 # ==> Topic following
 #
@@ -164,7 +177,18 @@ Rails.application.config.to_prepare do
   Thredded::ApplicationController.module_eval do
     rescue_from Thredded::Errors::LoginRequired do |exception|
       flash.now[:notice] = exception.message
-      render template: 'devise/sessions/new', status: :forbidden
+      controller = Users::SessionsController.new
+      controller.request = request
+      controller.request.env['devise.mapping'] = Devise.mappings[:user]
+      controller.response = response
+      controller.response_options = { status: :forbidden }
+      controller.process(:new)
+    end
+  end
+
+  Thredded::NullUser.module_eval do
+    def thredded_can_read_messageboards
+      Thredded::Messageboard.where(private: false)
     end
   end
 end

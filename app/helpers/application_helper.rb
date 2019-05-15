@@ -36,14 +36,20 @@ module ApplicationHelper
 
   def authority(user)
     if user.moderator?
-      fa_icon('far fa-star', 'Moderator')
+      fa_icon('far fa-star', 'Moderator', true)
     else
       ''
     end
   end
 
-  def fa_icon(name, title=nil)
+  def fa_icon(name, title = nil, tooltip = false)
     title ||= name
-    "<i class=\"#{name}\" title=\"#{title}\" style=\"font-size: 0.7em;\"></i>".html_safe
+    icon = ''
+
+    # icon += '<span class="tooltip">' if tooltip
+    icon += "<i class=\"#{name}\" title=\"#{title}\"></i>".html_safe
+    # icon += "<span class=\"tooltiptext\">#{title}</span></span>" if tooltip
+
+    icon.html_safe
   end
 end
